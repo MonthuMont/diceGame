@@ -162,39 +162,42 @@ main {
   font-weight: 700;
   color: #d50b0b;
 }
-@media(max-width:666px){
-  .main{
+@media (max-width: 666px) {
+  .main {
     max-width: 600px;
   }
-  .current{
+  .current {
     height: 100px;
     width: 100px;
   }
 }
-@media(max-width:560px){
-  .main{
+@media (max-width: 560px) {
+  .main {
     max-width: 450px;
   }
 }
-@media(max-width:560px){
+@media (max-width: 560px) {
   /* .main{
     flex-wrap: wrap;
   } */
-  .player{
+  .player {
     height: 400px;
     width: 130px;
   }
-  .current{
+  .current {
     width: 70px;
     height: 100px;
   }
-  .name{
+  .name {
     font-size: 26px;
   }
-  .current-label{
+  .current-label {
     font-size: 11px;
   }
-  .dice{
+  .dice {
     height: 7rem;
   }
+}
+.hidden{
+  display: none;
 }
