@@ -33,7 +33,50 @@ main {
   overflow: hidden;
   display: flex;
 }
-
+.monthu-pos{
+  position: relative;
+}
+.monthu {
+  position: absolute;
+  height: 65px;
+  width: 150px;
+  background-color: #ec3b05;
+  z-index: 99;
+  text-align: center;
+  left: 50%;
+  top: ;
+  transform: translate(-50%, -50%);
+  
+  
+}
+@keyframes color-change{
+  0%{
+    color: aqua;
+  }
+  25%{
+    
+    color: wheat;
+  }
+  50%{
+    color: chartreuse;
+  }
+  75%{
+    color: green;
+  }
+  100%{
+    color: aquamarine;
+  }
+}
+.monthu__nickname {
+  display: block;
+  position: absolute;
+  font-size: 20px;
+  text-align: center;
+  top: 50%;
+  font-weight: bold;
+  animation: color-change 5s infinite;
+  
+}
 .player {
   flex: 50%;
   padding: 9rem;
@@ -128,7 +171,8 @@ main {
 }
 
 .btn--new {
-  top: 3rem;
+  /* top: 3rem; */
+  top: 8%;
 }
 .btn--roll {
   top: 40rem;
@@ -198,6 +242,6 @@ main {
     height: 7rem;
   }
 }
-.hidden{
+.hidden {
   display: none;
 }
