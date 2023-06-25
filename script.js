@@ -10,6 +10,7 @@ const current0Element = document.getElementById('current--0');
 const current1Element = document.getElementById('current--1');
 let player0 = document.querySelector('.player--active');
 let player1 = document.querySelector('.player--1');
+let player00 = document.querySelector('.player--0');
 // Game initial conditions;
 score0Points.textContent = 0;
 score1Points.textContent = 0;
@@ -31,33 +32,39 @@ let switchActivePlayer = function () {
 let currentScore0 = 0;
 let activePlayer = 0;
 let totalScores = [0, 0];
+let gameEnd = true;
 
 throwDice.addEventListener('click', function () {
-  let randomNum = Math.round(Math.random() * 5 + 1);
-  console.log(randomNum);
-  diceElement.classList.remove('hidden');
-  diceElement.src = `dice${randomNum}.png`;
-  if (randomNum !== 1) {
-    currentScore0 += randomNum;
-    document.getElementById(`current--${activePlayer}`).textContent =
-      currentScore0;
-  } else {
-    switchActivePlayer();
+  if (gameEnd) {
+    let randomNum = Math.round(Math.random() * 5 + 1);
+    console.log(randomNum);
+    diceElement.classList.remove('hidden');
+    diceElement.src = `dice${randomNum}.png`;
+    if (randomNum !== 1) {
+      currentScore0 += randomNum;
+      document.getElementById(`current--${activePlayer}`).textContent =
+        currentScore0;
+    } else {
+      switchActivePlayer();
+    }
   }
 });
 btnHold.addEventListener('click', function () {
-  totalScores[activePlayer] += currentScore0;
-  document.querySelector(`#score--${activePlayer}`).textContent =
-    totalScores[activePlayer];
-  if (totalScores[activePlayer] >= 30) {
-    document
-      .querySelector(`.player--${activePlayer}`)
-      .classList.add('player--winner');
-    document
-      .querySelector(`.player--${activePlayer}`)
-      .classList.remove('player--active');
-  } else {
-    switchActivePlayer();
+  if (gameEnd) {
+    totalScores[activePlayer] += currentScore0;
+    document.querySelector(`#score--${activePlayer}`).textContent =
+      totalScores[activePlayer];
+    if (totalScores[activePlayer] >= 30) {
+      gameEnd = false;
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.add('player--winner');
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.remove('player--active');
+    } else {
+      switchActivePlayer();
+    }
   }
 });
 btnNew.addEventListener('click', function () {
@@ -69,10 +76,9 @@ btnNew.addEventListener('click', function () {
   document
     .querySelector(`.player--${activePlayer}`)
     .classList.add('player--active');
-  document
-    .querySelector(`.player--${activePlayer}`)
-    .classList.remove('player--winner');
+  player00.classList.remove('player--winner');
+  player1.classList.remove('player--winner');
   current0Element.textContent = currentScore0;
   current1Element.textContent = currentScore0;
- 
+  gameEnd = true;
 });
